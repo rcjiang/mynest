@@ -1,9 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 @Controller('content')
 export class ContentController {
   @Get()
-  findAll() {
+  findAll () {
     return [];
+  }
+
+  @Post() 
+  edit () {
   }
 }
