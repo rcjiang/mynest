@@ -4,7 +4,7 @@ import { Catalog, CatalogQueryRes } from './dto/Catalog.dto';
 @Controller('catalog')
 export class CatalogController {
   @Get()
-  findAll(@Query() query: Catalog): CatalogQueryRes {
+  async findAll(@Query() query: Catalog): Promise<CatalogQueryRes> {
     const id = query.id;
     return {
       list: [],
