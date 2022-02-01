@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Catalog } from './interface/catalog.interface';
+import { Catalog, CatalogsWithMatch } from './interface/catalog.interface';
 
 @Injectable ()
-export class CatalogsService {
-  private readonly catalogs: Catalog[];
+export class CatalogService {
+  private readonly catalogsWithMatch: CatalogsWithMatch;
 
-  findAll (): Catalog[] {
-    return this.catalogs;
+  findAll (query: Catalog): CatalogsWithMatch {
+    return this.catalogsWithMatch;
   }
 }

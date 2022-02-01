@@ -4,3 +4,8 @@ export interface Catalog {
   children: Catalog[],
   parents: string[]
 }
+
+export interface CatalogsWithMatch {
+  list: Catalog[],
+  match: Catalog
+}
