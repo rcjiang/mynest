@@ -3,16 +3,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatalogHttpModule } from './catalog/catalog-http.mudule';
+import { Catalog } from './catalog/catalog.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
-    type: 'mysql',
+    type: 'postgres',
     host: 'localhost',
     port: 5432,
     username: 'rcjia',
     password: '314159',
     database: 'postgres',
-    entities: [],
+    entities: [Catalog],
     synchronize: true
   }), CatalogHttpModule],
   controllers: [AppController],
