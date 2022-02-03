@@ -1,12 +1,21 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CatalogController } from './catalog/catalog.controller';
-import { CatalogService } from './catalog/catalog.service';
+import { CatalogHttpModule } from './catalog/catalog-http.mudule';
 
 @Module({
-  imports: [],
-  controllers: [AppController, CatalogController],
-  providers: [AppService, CatalogService],
+  imports: [TypeOrmModule.forRoot({
+    type: 'mysql',
+    host: 'localhost',
+    port: 5432,
+    username: 'rcjia',
+    password: '314159',
+    database: 'postgres',
+    entities: [],
+    synchronize: true
+  }), CatalogHttpModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
