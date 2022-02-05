@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CatalogHttpModule } from './catalog/catalog-http.mudule';
-import { Catalog } from './catalog/catalog.entity';
+import { GenreHttpModule } from './genre/genre-http.mudule';
+import { Genre } from './genre/genre.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,9 +13,9 @@ import { Catalog } from './catalog/catalog.entity';
     username: 'rcjia',
     password: '314159',
     database: 'postgres',
-    entities: [Catalog],
+    entities: [Genre],
     synchronize: true
-  }), CatalogHttpModule],
+  }), GenreHttpModule],
   controllers: [AppController],
   providers: [AppService],
 })
