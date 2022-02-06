@@ -1,13 +1,23 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Put, Query } from '@nestjs/common';
 import { GenreService } from './genre.service';
 import { Genre } from './genre.entity';
 
 @Controller('genre')
 export class GenreController {
-  constructor (private readonly catalogService: GenreService) {}
+  constructor (private readonly genreService: GenreService) {}
 
-  @Get()
-  async findAll(@Query() query: Genre): Promise<Genre[]> {
-    return this.catalogService.findAll(query);
+  @Get('list')
+  async findAll (@Query() query: Genre): Promise<Genre[]> {
+    return this.genreService.findAll(query);
+  }
+
+  @Put()
+  add (@Body() body: Genre): Promise<Genre> {
+    return this.genreService.add(body)
+  }
+
+  @Delete()
+  del (@Query() query: Genre): Promise<void> {
+    return this.genreService.remove(query.id)
   }
 }
