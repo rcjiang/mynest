@@ -1,19 +1,29 @@
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 
+export enum Gender {
+  MALE = 0,
+  FEMALE = 1,
+  UNKNOWN = 2
+}
+
 @Entity()
-class Author extends BaseEntity {
+export class Author extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number
 
   @Column()
   name: string
 
-  @Column()
+  @Column('date')
   birthday: number
 
-  @Column()
+  @Column('date')
   deathday: number
 
-  @Column()
-  gender: number
+  @Column({
+    type: 'enum',
+    enum: Gender,
+    default: Gender.MALE
+  })
+  gender: Gender
 }
