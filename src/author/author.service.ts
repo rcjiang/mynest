@@ -18,27 +18,27 @@ export class AuthorService {
   }
 
   create (body): Promise<Author> {
-    const genre = new Author();
-    genre.name = body.name;
-    return this.authorRepository.save(genre);
+    const author = new Author();
+    author.name = body.name;
+    return author.save();
   }
 
   async edit (body): Promise<Author> {
     const { id, name } = body
-    const genre = await this.authorRepository.findOne(id);
-    genre.name = name;
-    return this.authorRepository.save(genre);
+    const author = await Author.findOne(id);
+    author.name = name;
+    return author.save();
   }
 
   async findAll (query: Author): Promise<Author[]> {
-    return this.authorRepository.find();
+    return Author.find();
   }
 
   async find (id: number): Promise<Author> {
-    return this.authorRepository.findOneOrFail(id);
+    return Author.findOneOrFail(id);
   }
 
   async remove (id: number): Promise<void> {
-    await this.authorRepository.delete(id);
+    await Author.delete(id);
   }
 }
